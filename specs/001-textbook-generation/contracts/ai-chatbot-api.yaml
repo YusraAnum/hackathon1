@@ -1,0 +1,133 @@
+# API Contract: AI Chatbot Service
+
+## Base URL
+`/api/ai`
+
+## Endpoints
+
+### POST /query
+Submit a question to the AI chatbot and receive a response based on textbook content.
+
+#### Request
+- Method: POST
+- Path: `/api/ai/query`
+- Headers:
+  - `Content-Type: application/json`
+- Authentication: Optional (for session tracking)
+
+#### Request Body
+```json
+{
+  "question": "What is the main principle of Physical AI?",
+  "context": "Selected text from the textbook (optional)",
+  "sessionId": "session-123 (optional)",
+  "userId": "user-456 (optional)"
+}
+```
+
+#### Response
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "id": "response-789",
+  "queryId": "query-101",
+  "answer": "The main principle of Physical AI is the integration of artificial intelligence with physical systems...",
+  "sources": [
+    {
+      "chapterId": "chapter-1",
+      "chapterTitle": "Introduction to Physical AI",
+      "section": "Core Principles",
+      "confidence": 0.95
+    }
+  ],
+  "confidence": 0.89,
+  "timestamp": "2025-12-08T10:30:00Z"
+}
+```
+
+### POST /query/stream
+Submit a question to the AI chatbot and receive a streaming response.
+
+#### Request
+- Method: POST
+- Path: `/api/ai/query/stream`
+- Headers:
+  - `Content-Type: application/json`
+- Authentication: Optional (for session tracking)
+
+#### Request Body
+```json
+{
+  "question": "Explain how humanoid robots use sensorimotor learning?",
+  "context": "Selected text from chapter 2",
+  "sessionId": "session-123 (optional)",
+  "userId": "user-456 (optional)"
+}
+```
+
+#### Response
+- Status: 200 OK
+- Content-Type: text/event-stream
+
+### GET /sessions/{sessionId}
+Retrieve conversation history for a specific session.
+
+#### Request
+- Method: GET
+- Path: `/api/ai/sessions/{sessionId}`
+- Headers: None required
+
+#### Response
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "sessionId": "session-123",
+  "history": [
+    {
+      "id": "query-101",
+      "question": "What is Physical AI?",
+      "timestamp": "2025-12-08T10:25:00Z"
+    },
+    {
+      "id": "response-789",
+      "answer": "Physical AI is the intersection of artificial intelligence and physical systems...",
+      "timestamp": "2025-12-08T10:25:05Z"
+    }
+  ],
+  "createdAt": "2025-12-08T10:25:00Z",
+  "lastActivity": "2025-12-08T10:30:00Z"
+}
+```
+
+### POST /validate
+Validate if a question can be answered based on textbook content.
+
+#### Request
+- Method: POST
+- Path: `/api/ai/validate`
+- Headers:
+  - `Content-Type: application/json`
+
+#### Request Body
+```json
+{
+  "question": "What is the capital of France?",
+  "context": "Textbook content about Physical AI"
+}
+```
+
+#### Response
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "canAnswer": false,
+  "reason": "Question is outside the scope of textbook content",
+  "relevanceScore": 0.1
+}
+```

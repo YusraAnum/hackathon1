@@ -1,0 +1,8 @@
+{
+  "label": "User Guide",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Welcome to the AI-Native Textbook user documentation. This guide will help you understand how to use the AI-Native Textbook platform effectively."
+  }
+}

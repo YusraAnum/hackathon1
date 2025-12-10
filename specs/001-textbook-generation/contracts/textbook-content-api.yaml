@@ -1,0 +1,102 @@
+# API Contract: Textbook Content Service
+
+## Base URL
+`/api/textbook`
+
+## Endpoints
+
+### GET /chapters
+Retrieve all textbook chapters with metadata.
+
+#### Request
+- Method: GET
+- Path: `/api/textbook/chapters`
+- Headers: None required
+- Query Parameters:
+  - `limit` (optional): Number of chapters to return (default: 10, max: 100)
+  - `offset` (optional): Number of chapters to skip (default: 0)
+
+#### Response
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "Introduction to Physical AI",
+      "order": 1,
+      "wordCount": 2500,
+      "readingTime": "10 min",
+      "createdAt": "2025-12-01T00:00:00Z",
+      "updatedAt": "2025-12-01T00:00:00Z"
+    }
+  ],
+  "total": 6,
+  "limit": 10,
+  "offset": 0
+}
+```
+
+### GET /chapters/{id}
+Retrieve a specific textbook chapter by ID.
+
+#### Request
+- Method: GET
+- Path: `/api/textbook/chapters/{id}`
+- Headers: None required
+- Path Parameters:
+  - `id`: Chapter identifier
+
+#### Response
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "id": "chapter-1",
+  "title": "Introduction to Physical AI",
+  "content": "# Introduction to Physical AI\n\nPhysical AI is the intersection of artificial intelligence and physical systems...",
+  "order": 1,
+  "wordCount": 2500,
+  "readingTime": "10 min",
+  "createdAt": "2025-12-01T00:00:00Z",
+  "updatedAt": "2025-12-01T00:00:00Z"
+}
+```
+
+### GET /chapters/{id}/toc
+Retrieve table of contents for a specific chapter.
+
+#### Request
+- Method: GET
+- Path: `/api/textbook/chapters/{id}/toc`
+- Headers: None required
+- Path Parameters:
+  - `id`: Chapter identifier
+
+#### Response
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "chapterId": "chapter-1",
+  "title": "Introduction to Physical AI",
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "What is Physical AI?",
+      "level": 2,
+      "order": 1
+    },
+    {
+      "id": "section-2",
+      "title": "Historical Context",
+      "level": 2,
+      "order": 2
+    }
+  ]
+}
+```

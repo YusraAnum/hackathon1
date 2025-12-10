@@ -1,0 +1,146 @@
+.navigation {
+  width: 100%;
+  background-color: white;
+  border-right: 1px solid #e0e0e0;
+  padding: 1rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  position: sticky;
+  top: 4rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapterItem {
+  margin-bottom: 0.25rem;
+}
+
+.chapterHeader {
+  display: flex;
+  align-items: center;
+}
+
+.chapterLink {
+  display: block;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: #34495e;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.chapterLink:hover {
+  background-color: #f8f9fa;
+  color: #2980b9;
+}
+
+.chapterLink.active {
+  background-color: #3498db;
+  color: white;
+  font-weight: 500;
+}
+
+.searchContainer {
+  margin-bottom: 1rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.sectionsList {
+  margin-left: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.noResults {
+  padding: 0.5rem;
+  color: #666;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.sectionItem {
+  margin-left: 0;
+  margin-bottom: 0.125rem;
+}
+
+.sectionLink {
+  display: block;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  text-decoration: none;
+  color: #555;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.sectionLink:hover {
+  background-color: #f8f9fa;
+  color: #2980b9;
+}
+
+.sectionLink.active {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  font-weight: 500;
+}
+
+.expandButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  margin-right: 0.25rem;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.loading,
+.error {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navigation {
+    position: relative;
+    top: 0;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+  }
+}

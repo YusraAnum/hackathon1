@@ -1,0 +1,281 @@
+.textbookViewer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.chapterHeader {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chapterHeader h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 1rem 1rem 0;
+  flex-grow: 1;
+}
+
+.navigationControls {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.navButton {
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.navButton:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.navButton:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.chapterContent {
+  font-size: 1.1rem;
+}
+
+.chapterContent h1 {
+  font-size: 2rem;
+  color: #34495e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.chapterContent h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.chapterContent h3 {
+  font-size: 1.25rem;
+  color: #34495e;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.chapterContent p {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.chapterContent ul,
+.chapterContent ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.chapterContent li {
+  margin-bottom: 0.5rem;
+}
+
+.chapterContent a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.chapterContent a:hover {
+  text-decoration: underline;
+}
+
+.chapterContent code {
+  background-color: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+  color: #e74c3c;
+}
+
+.chapterContent pre {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.chapterContent pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.chapterContent blockquote {
+  border-left: 4px solid #3498db;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem 0;
+  color: #6c757d;
+}
+
+.spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 0.25rem solid #e9ecef;
+  border-top: 0.25rem solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  padding: 2rem;
+  text-align: center;
+  color: #e74c3c;
+  background-color: #fdf2f2;
+  border: 1px solid #fecaca;
+  border-radius: 5px;
+  margin: 1rem;
+}
+
+.error h2 {
+  margin-top: 0;
+}
+
+.empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+.contentPlaceholder {
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .textbookViewer {
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  .chapterHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .chapterHeader h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .navigationControls {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    order: -1; /* Move navigation controls to the top on mobile */
+  }
+
+  .navButton {
+    flex: 1;
+    max-width: 120px;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .chapterContent h1 {
+    font-size: 1.5rem;
+  }
+
+  .chapterContent h2 {
+    font-size: 1.25rem;
+  }
+
+  .chapterContent h3 {
+    font-size: 1.1rem;
+  }
+
+  .chapterContent pre {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+
+  .chapterContent blockquote {
+    padding-left: 0.75rem;
+    margin: 1rem 0;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .textbookViewer {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .chapterHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .navButton {
+    max-width: 100px;
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .chapterContent {
+    font-size: 1rem;
+  }
+
+  .chapterContent h1 {
+    font-size: 1.3rem;
+  }
+
+  .chapterContent h2 {
+    font-size: 1.15rem;
+  }
+
+  .chapterContent h3 {
+    font-size: 1.05rem;
+  }
+}
+
+/* Landscape mode improvements */
+@media (max-height: 500px) and (orientation: landscape) {
+  .textbookViewer {
+    padding: 1rem 0.5rem;
+  }
+}
